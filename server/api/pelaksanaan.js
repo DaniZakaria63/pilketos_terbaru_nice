@@ -3,6 +3,7 @@
 var express = require('express'),
     router = express.Router(),
     Pelaksanaan = require('../model/pelaksanaan'),
+    Calon=require('../model/calon'),
     Siswa=require('../model/siswa');
 
 router.get('/', function (req, res) {
@@ -13,6 +14,36 @@ router.get('/', function (req, res) {
         res.status(200).json({pelaksanaan:pelaksanaan,message:"Berhasil"})
     })
 });
+
+router.put('/vote/:id_siswa/:id_calon',function(req,res){
+    var id_siswa=req.params.id_siswa,
+        id_calon=req.params.id_calon,
+        body=req.body;
+
+    if(body && body._id_calon != id_calon && body._id_siswa != id_siswa){
+        return res.status(500).json({message:'ID Tidak Sama'})
+    }
+
+    Calon.findById(id_calon,function(err,calon){
+        if(err) return res.json({message:err})
+        Calon.findOneAndUpdate(
+            {_id:id_calon},
+            {jumlah:(calon.jumlah)+1},
+            function(err,data){
+                if(err) return res.json({message:"error kedua"})
+                Siswa.findOneAndUpdate(
+                    {_id:id_siswa},
+                    {status:true},
+                    function(err,siswa){
+                        if(err) return res.json({message:"Error Ketiga"})
+                        res.json({message:"Berhasil",siswa:siswa})
+                    }
+                )
+            }
+        )
+    })
+
+})
 
 router.post('/login',function(req,res){
     var nis=req.body.nis,nama=req.body.nama;

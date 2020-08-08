@@ -1,9 +1,27 @@
 'use strict';
 
+const { EDESTADDRREQ } = require('constants');
+
 var express = require('express'),
     router = express.Router(),
+    multer = require('multer'),
+    path = require('path'),
     Calon = require('../model/calon');
 
+    const storage=multer.diskStorage({
+        destination:path.join('./images'),
+        filename:function(req,file,cb){
+            cb(null,file.fieldname+'-'+Date.now()+path.extname(file.originalname));
+        }
+    });
+    const upload=nulter({storage:storage}).single('picture');
+
+    router.post('/image',function(req,res){
+        upload(req,res,err=>{
+            if(err) throw err
+            res.json({message:"Berhasil",filename:req.file.filename});
+        })
+    })
     
 router.get('/', function (req, res) {
     Calon.find({},function(err,calon){

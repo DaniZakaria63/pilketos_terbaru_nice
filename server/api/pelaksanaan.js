@@ -31,4 +31,35 @@ router.post('/',function(req,res){
     })
 })
 
+router.put('/admin/:id',function(req,res){
+    var id=req.params.id,body=req.body;
+    if(body && body._id != id){
+        return res.status(500).json({message:'ID Tidak Sama'})
+    }
+    Pelaksanaan.findOneAndUpdate(
+        {_id:id},
+        {admin:{
+            username:body.username,
+            password:body.password
+        }},
+        function(err,admin){
+            if(err) return res.status(500).json({message:err})
+            res.json({message:"Berhasil",admin:admin})
+        }
+    )
+})
+
+router.put('/jadwal/:id',function(req,res){
+    var id=req.params.id,body=req.body;
+    if(body && body._id != id){
+        return res.status(500).json({message:'ID Tidak Sama'})
+    }
+    Pelaksanaan.findOneAndUpdate(
+        {_id:id},
+        {waktu_pemilihan:body.jadwal},
+        function(err,jadwal){
+            if(err) return res.json({message:err}).status(500);
+            res.status(200).json({message:"Berhasil",jadwal:jadwal})
+        });
+})
 module.exports=router

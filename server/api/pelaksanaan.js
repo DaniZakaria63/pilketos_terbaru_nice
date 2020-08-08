@@ -3,6 +3,7 @@
 var express = require('express'),
     router = express.Router(),
     Pelaksanaan = require('../model/pelaksanaan'),
+    Kelas=require('../model/kelas'),
     Calon=require('../model/calon'),
     Siswa=require('../model/siswa');
 
@@ -52,6 +53,21 @@ router.post('/login',function(req,res){
             message:"berhasil",
             siswa:siswa
         })
+    })
+})
+
+router.get('/kelas',function(req,res){
+    Kelas.find({},function(err,kelas){
+        if(err) return res.json({message:err}).status(500)
+        res.status(200).json({kelas:kelas})
+    })
+})
+
+router.get('/kelas/:id',function(req,res){
+    var id=req.params.id;
+    Kelas.findById(id,function(err,kelas){
+        if(err) return res.json({message:err})
+        res.json({kelas:kelas}).status(200);
     })
 })
 

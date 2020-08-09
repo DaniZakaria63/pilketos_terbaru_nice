@@ -16,6 +16,21 @@ router.get('/', function (req, res) {
     })
 });
 
+router.get('/kelas',function(req,res){
+    Kelas.find({},function(err,kelas){
+        if(err) return res.json({message:err}).status(500)
+        res.status(200).json({kelas:kelas})
+    })
+})
+
+router.get('/kelas/:id',function(req,res){
+    var id=req.params.id;
+    Kelas.findById(id,function(err,kelas){
+        if(err) return res.json({message:err})
+        res.json({kelas:kelas}).status(200);
+    })
+})
+
 router.put('/vote/:id_siswa/:id_calon',function(req,res){
     var id_siswa=req.params.id_siswa,
         id_calon=req.params.id_calon,
@@ -49,27 +64,15 @@ router.put('/vote/:id_siswa/:id_calon',function(req,res){
 router.post('/login',function(req,res){
     var nis=req.body.nis,nama=req.body.nama;
     Siswa.findOne({nis:nis,nama:nama},function(err,siswa){
+        if(err) return json({message:err}).status(500)
         res.status(200).json({
             message:"berhasil",
             siswa:siswa
         })
     })
+    // res.json({nama:req.body.nama})
 })
 
-router.get('/kelas',function(req,res){
-    Kelas.find({},function(err,kelas){
-        if(err) return res.json({message:err}).status(500)
-        res.status(200).json({kelas:kelas})
-    })
-})
-
-router.get('/kelas/:id',function(req,res){
-    var id=req.params.id;
-    Kelas.findById(id,function(err,kelas){
-        if(err) return res.json({message:err})
-        res.json({kelas:kelas}).status(200);
-    })
-})
 
 router.post('/',function(req,res){
     Pelaksanaan.create(req.body,function(err,admin){

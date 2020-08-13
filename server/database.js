@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     projectName = 'pilketos';
 
 
-mongoose.connect('mongodb://'+host+'/'+projectName, { useNewUrlParser: true },function(err){
+mongoose.connect('mongodb://'+host+'/'+projectName, { useNewUrlParser: true ,useFindAndModify:true},function(err){
     if(err){
         console.log("Connection Falied");
     }else{

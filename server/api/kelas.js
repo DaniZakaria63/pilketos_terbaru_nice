@@ -2,7 +2,7 @@
 
 var express = require('express'),
     router = express.Router(),
-    Kelas = require('../model/siswa');
+    Kelas = require('../model/kelas');
 
     
 router.get('/', function (req, res) {

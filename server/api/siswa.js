@@ -5,6 +5,13 @@ var express = require('express'),
     Siswa = require('../model/siswa');
 
     
+router.get('/kelas/:nama',function(req,res){
+    Siswa.find({kelas:req.params.nama},function(err,siswa){
+        if(err) return res.json({message:err}).status(500);
+        res.status(200).json({siswa:siswa});
+    })
+});
+
 router.get('/', function (req, res) {
     Siswa.find({},function(err,siswa){
         res.json({siswa:siswa})

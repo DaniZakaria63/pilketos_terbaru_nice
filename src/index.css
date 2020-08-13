@@ -1,0 +1,11 @@
+.login-dialog{
+    height: 40vh;
+    margin-top: 20px;
+}
+.login-card{
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+}
+body{
+    background-color: blanchedalmond;
+}

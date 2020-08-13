@@ -12,6 +12,7 @@ export default class App extends React.Component {
             loginStatus: false
         };
         this.handleWasLogin = this.handleWasLogin.bind(this);
+        this.handleDeleteSession=this.handleDeleteSession.bind(this)
     }
 
     handleWasLogin(data) {
@@ -20,12 +21,16 @@ export default class App extends React.Component {
             siswa: data.siswa
         })
     }
+    handleDeleteSession(){
+        this.setState({
+            loginStatus:false,
+            siswa:{}
+        })
+    }
 
     render() {
         return (
             <Switch>
-                <h1>This is Header</h1>
-
                 <Route
                     exact
                     path={"/login"}
@@ -40,7 +45,7 @@ export default class App extends React.Component {
                     // component={Home}
                     render={props =>{
                         if(Auth.isAuth()){
-                            return <Home {...props} siswa={this.state.siswa}/>
+                            return <Home {...props} siswa={this.state.siswa} handleDeleteSession={this.handleDeleteSession}/>
                         }else{
                             return <Redirect to={
                                 {
@@ -59,7 +64,3 @@ export default class App extends React.Component {
         )
     }
 } 
-{/* <Route
-                    path={"*"}
-                    component={() => "404 NOT FOUND"}
-                /> */}

@@ -1,10 +1,16 @@
 import React from 'react';
-import LoginDialog from '../components/LoginDialog';
+import Store from '../store';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppClient from '../client/App';
 
-class Template extends React.Component{
-    render(){
-        return(
-            <LoginDialog isActive="null"/>
+class Template extends React.Component {
+    render() {
+        return (
+            <Store>
+                <Router>
+                    <AppClient />
+                </Router>
+            </Store>
         )
     }
 }

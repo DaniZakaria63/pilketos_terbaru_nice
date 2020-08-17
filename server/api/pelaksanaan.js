@@ -40,24 +40,37 @@ router.put('/vote/:id_siswa/:id_calon',function(req,res){
         return res.status(500).json({message:'ID Tidak Sama'})
     }
 
-    Calon.findById(id_calon,function(err,calon){
-        if(err) return res.json({message:err})
-        Calon.findOneAndUpdate(
-            {_id:id_calon},
-            {jumlah:(calon.jumlah)+1},
-            function(err,data){
-                if(err) return res.json({message:"error kedua"})
-                Siswa.findOneAndUpdate(
-                    {_id:id_siswa},
-                    {status:true},
-                    function(err,siswa){
-                        if(err) return res.json({message:"Error Ketiga"})
-                        res.json({message:"Berhasil",siswa:siswa})
-                    }
-                )
-            }
-        )
-    })
+    Siswa.findById(id_siswa,function(err,data){
+        if(err) return res.json({message:err});
+
+        if(!data.status){
+            //siswa belum memilih
+            Siswa.findOneAndUpdate(
+                {_id:id_siswa},
+                {status:true},
+                function(err,siswa){
+                    if(err) return res.json({message:"Error Ketiga"})
+                    
+                    Calon.findById(id_calon,function(err,calon){
+                        if(err) return res.json({message:err})
+
+                        Calon.findOneAndUpdate(
+                            {_id:id_calon},
+                            {jumlah:(calon.jumlah)+1},
+                            function(err,data){
+                                if(err) return res.json({message:"error kedua"})
+                                res.json({message:"berhasil"}).status(200);
+                            }
+                        )
+                    })
+                }
+            )
+        }
+        else{
+            res.json({message:'false'}).status(200);
+        }
+    });
+    
 
 })
 

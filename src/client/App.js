@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './Login'
 import Home from './Home'
 import Auth from './Auth';
@@ -30,6 +30,7 @@ export default class App extends React.Component {
 
     render() {
         return (
+            <Router>
             <Switch>
                 <Route
                     exact
@@ -58,9 +59,9 @@ export default class App extends React.Component {
                         }
                     }}
                 />
-
                
             </Switch>
+            </Router>
         )
     }
 } 

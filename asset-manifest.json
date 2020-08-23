@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/pilketos_terbaru_nice/static/css/main.fc53a324.chunk.css",
+    "main.js": "/pilketos_terbaru_nice/static/js/main.43f5a2fa.chunk.js",
+    "main.js.map": "/pilketos_terbaru_nice/static/js/main.43f5a2fa.chunk.js.map",
+    "runtime-main.js": "/pilketos_terbaru_nice/static/js/runtime-main.d5fb03a7.js",
+    "runtime-main.js.map": "/pilketos_terbaru_nice/static/js/runtime-main.d5fb03a7.js.map",
+    "static/css/2.f3cffc9e.chunk.css": "/pilketos_terbaru_nice/static/css/2.f3cffc9e.chunk.css",
+    "static/js/2.eddb07c4.chunk.js": "/pilketos_terbaru_nice/static/js/2.eddb07c4.chunk.js",
+    "static/js/2.eddb07c4.chunk.js.map": "/pilketos_terbaru_nice/static/js/2.eddb07c4.chunk.js.map",
+    "index.html": "/pilketos_terbaru_nice/index.html",
+    "precache-manifest.7d03d94b6cb8b4ab48cec860a5db0dae.js": "/pilketos_terbaru_nice/precache-manifest.7d03d94b6cb8b4ab48cec860a5db0dae.js",
+    "service-worker.js": "/pilketos_terbaru_nice/service-worker.js",
+    "static/css/2.f3cffc9e.chunk.css.map": "/pilketos_terbaru_nice/static/css/2.f3cffc9e.chunk.css.map",
+    "static/css/main.fc53a324.chunk.css.map": "/pilketos_terbaru_nice/static/css/main.fc53a324.chunk.css.map",
+    "static/js/2.eddb07c4.chunk.js.LICENSE.txt": "/pilketos_terbaru_nice/static/js/2.eddb07c4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d5fb03a7.js",
+    "static/css/2.f3cffc9e.chunk.css",
+    "static/js/2.eddb07c4.chunk.js",
+    "static/css/main.fc53a324.chunk.css",
+    "static/js/main.43f5a2fa.chunk.js"
+  ]
+}

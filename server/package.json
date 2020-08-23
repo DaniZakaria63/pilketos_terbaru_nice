@@ -14,6 +14,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "ddos": "^0.2.1",
     "express": "^4.17.1",
     "http-proxy-middleware": "^1.0.5",
     "mongoose": "^5.9.28",

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df00131455604476dda004bd79b9f5a3",
+    "revision": "e3ca9349d5079704d86c8d727620cbc0",
     "url": "/pilketos_terbaru_nice/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pilketos_terbaru_nice/static/css/2.f3cffc9e.chunk.css"
   },
   {
-    "revision": "e1a285e7e8401d831d92",
+    "revision": "e2b0bc392fd7ed0d3351",
     "url": "/pilketos_terbaru_nice/static/css/main.fc53a324.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pilketos_terbaru_nice/static/js/2.40d335fb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e1a285e7e8401d831d92",
-    "url": "/pilketos_terbaru_nice/static/js/main.dcc8f10a.chunk.js"
+    "revision": "e2b0bc392fd7ed0d3351",
+    "url": "/pilketos_terbaru_nice/static/js/main.d6309215.chunk.js"
   },
   {
     "revision": "6ce5d9c546481be64a45",

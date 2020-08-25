@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pilketos_terbaru_nice/precache-manifest.ed8bf9ebe5d3ed3d3947e3f506cb3ee0.js"
+  "/pilketos_terbaru_nice/precache-manifest.5a06fe51b6be865187a8ee55603e0e3e.js"
 );
 
 self.addEventListener('message', (event) => {

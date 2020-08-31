@@ -1,60 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route ,Redirect} from 'react-router-dom';
-import Auth from './Auth';
-import Login from './Login';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import NavAdmin from '../layouts/NavAdmin';
+import Home from './Pages/Home';
+import Master from './Pages/Master';
+import About from './Pages/About';
+import MasterSiswa from './Pages/MasterSiswa';
+import {connect} from 'react-redux';
 
-class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            data:{}
-        }
-        this.hasLogin=this.hasLogin.bind(this)
-    }
-    hasLogin(data){
-        this.setState({
-            data:data
-        })
-    }
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route
-                        exact
-                        path={"/admin/login"}
-                        render={(props) => (
-                            <Login {...props} hasLogin={this.hasLogin}/>
-                        )}>
-                    </Route>
+const App = () => (
+    <Router basename="/admin">
+        <NavAdmin />
+        <Switch>
+            <Route exact path="/master" component={Master}/>
+            <Route exact path="/master-siswa" component={MasterSiswa}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/" component={Home}/>
+            {/* <Redirect exact from="/" to="/about" /> */}
+        </Switch>
+    </Router>
+)
 
-                    <Route
-                        exact
-                        path={"/admin"}
-                        // component={Home}
-                        render={props => {
-                            if (Auth.isAuth()) {
-                                return <h1>ADMIN</h1>
-                            } else {
-                                return <Redirect to={
-                                    {
-                                        pathname: "/admin/login",
-                                        state: {
-                                            from: props.location
-                                        }
-                                    }
-                                } />
-                            }
-                        }}
-                    />
-                    <Route path="*" render={(props) => (
-                        <h1 className="text-center mx-auto">404 NOT FOUND</h1>
-                    )} />
+const mapStateToProps=(state)=>({
+    isLoggedIn:!!!state.isLoggedIn
+})
 
-                </Switch>
-            </Router>
-        )
-    }
-}
-
-export default App;
+export default connect(mapStateToProps)(App);

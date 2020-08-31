@@ -16,3 +16,36 @@ body{
 .alert-home{
     width: 50vw;
 }
+.nav-admin{
+    padding: 10px;
+    display: inline-flex;
+    width: 100vw;
+    background-color: rgb(78, 243, 255);
+}
+.nav-admin li{
+    color: white;
+    list-style: none;
+    padding:10px 20px 10px 20px;
+}
+.nav-admin li:hover{
+    color: black;
+    background-color: rgb(238, 238, 238);
+    border: 10px 10px 10px 10px solid green;
+}
+.nav-admin li:active{
+    background-color: rgb(190, 135, 135);
+}
+
+a{
+    text-decoration: none;
+}
+
+.nav-admin li .btn-logout{
+    left: 0px;
+    align-content: flex-end;
+}
+
+.card-find-siswa{
+    margin-left: 0px;
+    height: 40%;
+}

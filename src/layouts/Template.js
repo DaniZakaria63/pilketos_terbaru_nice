@@ -5,18 +5,17 @@ import AppClient from '../client/App';
 import AppServer from '../admin/App';
 
 
-class Template extends React.Component {
-    render() {
-        return (
-            <Router>
-                <Route path={'/'}>
-                    <AppClient />
-                </Route>
-                <Route path='/admin'>
-                    <AppServer />
-                </Route>
-            </Router>
-        )
-    }
+const Template = () => {
+    return (
+        <Router>
+            <Route path={'/'}>
+                <AppClient />
+            </Route>
+            <Route path='/admin'>
+                <AppServer />
+            </Route>
+        </Router>
+    )
+
 }
 export default Template;

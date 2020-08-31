@@ -1,41 +1,47 @@
 import React from 'react';
-import {Card,Form,Button} from 'react-bootstrap';
-import API from '../api';
+import { Card, Form, Button } from 'react-bootstrap';
+import API from '../../api';
+import {connect} from 'react-redux'
+import { login, IS_AUTH } from '../../store/action/AuthAction';
 
 class AdminLoginDialog extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            username:'',
-            password:'',
-            data:{}
+        this.state = {
+            username: '',
+            password: ''
         }
-        this.handleSubmit=this.handleSubmit.bind(this);
-        this.handleChange=this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleSubmit(event){
+    handleSubmit(event) {
         event.preventDefault();
         // console.log(this.state.username)
-        API.post('/pelaksanaan/admin',{
-            username:this.state.username,
-            password:this.state.password
-        }).then(response=>{
+        let vm=this;
+        API.post('/pelaksanaan/admin', {
+            username: this.state.username,
+            password: this.state.password
+        }).then(response => {
             // console.log(response.data);
-            if(response.data.admin===null){
+            if (response.data.admin === null) {
                 alert("Tidak Ditemukan")
-            }else{
-                this.props.handleWasLogin(response.data.admin);
+            } else {
+                vm.props.login({ 
+                    isLoggedIn:true,
+                    data:response.data.admin,
+                    token:IS_AUTH
+                });
             }
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
         })
     }
-    handleChange(event){
-        const name=event.target.name;
-        const value=event.target.value;
+    handleChange(event) {
+        const name = event.target.name;
+        const value = event.target.value;
         event.preventDefault();
         this.setState({
-            [name]:value
+            [name]: value
         })
     }
     render() {
@@ -45,9 +51,9 @@ class AdminLoginDialog extends React.Component {
                     <Card.Body>
                         <Card.Title>LOGIN ADMIN PILKETOS</Card.Title>
                         <Form onSubmit={this.handleSubmit} className=" login-dialog">
-                            <Form.Group controlId="username">   
+                            <Form.Group controlId="username">
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control required name="username" type="text" placeholder="Username" value={this.state.username} onChange={this.handleChange}/>
+                                <Form.Control required name="username" type="text" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
                             </Form.Group>
                             <Form.Group controlId="password">
                                 <Form.Label>Password</Form.Label>
@@ -63,4 +69,5 @@ class AdminLoginDialog extends React.Component {
         )
     }
 }
-export default AdminLoginDialog;
+
+export default connect(null, {login})(AdminLoginDialog);

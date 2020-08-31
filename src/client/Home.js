@@ -36,7 +36,7 @@ class Home extends React.Component {
     }
     render() {return (
         <>
-            <PaslonNavigation nama="PILKETOS SMK Negeri 1 Kandeman"/>
+            <PaslonNavigation nama="PILKETOS"/>
             <br/>
             <Alert variant="primary" className="alert-home">
                Selamat Datang, {this.props.siswa.nama}
